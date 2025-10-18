@@ -408,7 +408,11 @@ fn scope_in(
                     graph,
                 );
             }
-            pad_mask = Some(mask);
+            pad_mask = Some(if let Some(existing_mask) = pad_mask {
+                crate::utils::binary(existing_mask, mask, GraphTerm::Mul, graph)
+            } else {
+                mask
+            });
             ranges.push(range);
             src = loop_in(
                 src,
@@ -449,7 +453,11 @@ fn scope_in(
                     graph,
                 );
             }
-            pad_mask = Some(mask);
+            pad_mask = Some(if let Some(existing_mask) = pad_mask {
+                crate::utils::binary(existing_mask, mask, GraphTerm::Mul, graph)
+            } else {
+                mask
+            });
             ranges.push(range);
             src = loop_in(
                 src,
