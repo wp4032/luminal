@@ -135,48 +135,28 @@ fn main() {
         inputs.insert(
             gmem_mapping[&unified_map[&a.id]],
             (
-                copy_buffer(
-                    &(0..1 * hidden)
-                        .map(|_| rng.random_range(-1e-2..1e-2))
-                        .collect_vec(),
-                    device,
-                ),
+                copy_buffer(&uniform(&[1, hidden], -1e-2, 1e-2), device,),
                 false,
             ),
         );
         inputs.insert(
             gmem_mapping[&unified_map[&gate.id]],
             (
-                copy_buffer(
-                    &(0..hidden * intermediate)
-                        .map(|_| rng.random_range(-1e-2..1e-2))
-                        .collect_vec(),
-                    device,
-                ),
+                copy_buffer(&uniform(&[hidden, intermediate], -1e-2, 1e-2), device),
                 false,
             ),
         );
         inputs.insert(
             gmem_mapping[&unified_map[&up.id]],
             (
-                copy_buffer(
-                    &(0..hidden * intermediate)
-                        .map(|_| rng.random_range(-1e-2..1e-2))
-                        .collect_vec(),
-                    device,
-                ),
+                copy_buffer(&uniform(&[hidden, intermediate], -1e-2, 1e-2), device),
                 false,
             ),
         );
         inputs.insert(
             gmem_mapping[&unified_map[&down.id]],
             (
-                copy_buffer(
-                    &(0..intermediate * hidden)
-                        .map(|_| rng.random_range(-1e-2..1e-2))
-                        .collect_vec(),
-                    device,
-                ),
+                copy_buffer(&uniform(&[intermediate, hidden], -1e-2, 1e-2), device),
                 false,
             ),
         );
