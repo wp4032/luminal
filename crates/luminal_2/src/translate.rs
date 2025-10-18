@@ -438,7 +438,7 @@ fn scope_in(
             mask = loop_in(
                 mask,
                 range.simplify_cache(simplify_cache),
-                Expression::from('z').lt(right_pad),
+                Expression::from('z').lt(range - right_pad),
                 graph,
             );
             for level in (i + 1)..shape.len() {

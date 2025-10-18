@@ -1,0 +1,119 @@
+right_pad: 1
+level: 0
+shape.dims()[level]: 256
+right_pad: 1
+term: 256
+term: 0
+term: 256
+term: 0
+term: 256
+term: 255
+term: z
+term: <
+term: 255
+term: 0
+term: 256
+term: 255
+term: z
+term: min
+term: 255
+term: z
+term: 255
+term: *
+term: 256
+term: 255
+term: z
+term: <
+term: 256
+term: 0
+term: 255
+term: 0
+term: 256
+term: z
+term: 255
+term: min
+term: 255
+term: *
+term: 256
+term: 0
+term: 255
+term: z
+term: 255
+term: z
+term: 256
+term: 255
+term: z
+term: *
+term: 256
+term: 256
+term: 255
+term: z
+term: *
+term: *
+term: 256
+term: z
+term: 65280
+term: *
+term: 256
+term: z
+term: 255
+term: *
+term: 255
+term: z
+term: 256
+term: 0
+term: 256
+term: 0
+term: 255
+term: a
+term: 255
+term: a
+term: 256
+term: z
+term: 256
+term: 256
+term: z
+term: *
+[?1049h[1;1H[38;5;2;49m┌[1mLogs[22m─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐[2;1H│                                                                                                                                                             │[3;1H│                                                                                                                                                             │[4;1H│                                                                                                                                                             │[5;1H│                                                                                                                                                             │[6;1H│                                                                                                                                                             │[7;1H│                                                                                                                                                             │[8;1H│                                                                                                                                                             │[9;1H│                                                                                                                                                             │[10;1H│                                                                                                                                                             │[11;1H│                                                                                                                                                             │[12;1H│                                                                                                                                                             │[13;1H└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘[14;1H┌[1mProgress[22m─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐[15;1H│                                                                             0%                                                                              │[16;1H└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘[39m[49m[59m[0m[?25l[1;2H[1m[38;5;2;49mGraph 1 Best 340282366920938463463374607431768211455µs Current 2228µs[2;2H[22mKernels:[2;11H1[3;2HKernel[3;9H1[3;11HGrid:[3;17H(256,[3;23H256,[3;28H1)[3;31HThreadblock:[3;44H(1,[3;48H1,[3;51H1)[3;54HSmem:[3;60H0[4;2H#include[4;11H<metal_stdlib>[5;2Husing[5;8Hnamespace[5;18Hmetal;[6;2Hkernel[6;9Hvoid[6;14Hkernel_name([7;10Huint3[7;16HblockIdx[7;25H[[threadgroup_position_in_grid]],[8;10Huint3[8;16HthreadIdx[8;26H[[thread_position_in_threadgroup]],[9;10Hdevice[9;17Hfloat*[9;24Ha[9;26H[[buffer(0)]],[9;41H//[9;44HGMEM(B[9;51HLoad)[10;10Hdevice[10;17Hfloat*[10;24Hb[10;26H[[buffer(1)]],[10;41H//[10;44HGMEM(Mask)[11;10Hdevice[11;17Hfloat*[11;24Hc[11;26H[[buffer(2)]],[11;41H//[11;44HGMEM(A[11;51HLoad)[12;10Hdevice[12;17Hfloat*[12;24Hd[12;26H[[buffer(3)]],[12;41H//[12;44HGMEM(Mask)[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m2[1;15H2228µs Current 25188µs[22m──────────────────────────────────[2;11H2[3;28H255) Threadblock: (1, 1, 1) S[3;58Hem:[3;62H0[15;2H█████████████████[15;79H11%[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m3[1;31H4033[15;19H[22m██████████████████[15;79H22[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m4[1;30H51806[15;37H[22m█████████████████[15;79H33[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m5[1;31H2117[15;54H[22m█████████████████[15;79H44[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m6[1;30H23732[15;71H[22m████████[39;48;5;2m55% [38;5;2;49m█████[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m7[1;30H51287[15;79H[22m[39;48;5;2m66[15;88H[38;5;2;49m██████████████████[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[1;8H[1m[38;5;2;49m8[1;32H478[15;79H[22m[39;48;5;2m77[15;106H[38;5;2;49m█████████████████[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[39m[49m[59m[0m[?25l[?25h[?1049l[?25hFASTEST (2228µs): Kernels: 1
+Kernel 1 Grid: (256, 256, 1) Threadblock: (1, 1, 1) Smem: 0
+#include <metal_stdlib>
+using namespace metal;
+kernel void kernel_name(
+	uint3 blockIdx [[threadgroup_position_in_grid]],
+	uint3 threadIdx [[thread_position_in_threadgroup]],
+	device float* a [[buffer(0)]], // GMEM(B Load)
+	device float* b [[buffer(1)]], // GMEM(Mask)
+	device float* c [[buffer(2)]], // GMEM(A Load)
+	device float* d [[buffer(3)]], // GMEM(Mask)
+	device float* e [[buffer(4)]], // GMEM(acc_2)
+	device float* f [[buffer(5)]]  // Output
+) {
+	int loop_g = blockIdx.x;
+	device float* h = d + (int)(loop_g < 255);
+	device float* i = c + (255*min((int)255, (int)loop_g));
+	device float* j = f + (loop_g*256);
+	int loop_k = blockIdx.y;
+	device float* l = b + (int)(loop_k < 255);
+	device float* m = a + min((int)loop_k, (int)255);
+	device float* n = j + loop_k;
+	thread float o[1] = {0.0};
+	#pragma unroll
+	for (int load = 0; load < 1; ++load) {
+		o[0] = *(e + 0);
+	}
+	for (int loop_p = 0; loop_p < 255; ++loop_p) {
+		device float* q = i + loop_p;
+		device float* r = m + (255*loop_p);
+		float s = *l * *r;
+		float t = *h * *q;
+		float u = t * s;
+		float v = *o + u;
+		*o = v;
+	}
+	*n = *o;
+}
+Outputs: [65536]
+Valids: 9 / 9
+[0.0001984066, -0.00012437021, 0.0005193678, -0.000186569, 8.514381e-5, -0.0006932436, -0.00042706897, 7.537892e-7, -9.1775146e-5, 5.5277284e-5]
+Max difference between CPU and GPU: 0.0030363724
+Found at indices: [60999]

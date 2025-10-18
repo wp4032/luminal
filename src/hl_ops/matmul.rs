@@ -7,10 +7,52 @@ impl GraphTensor {
             if vec {
                 self = self.expand_dim(0, 1);
             }
-            let (m, _) = self.dims2();
-            let (_, n) = rhs.dims2();
+            let (m, _k) = self.dims2();
+            let (_k, n) = rhs.dims2();
+
+            let m_new = m.clone() + 8 - m.clone() % 8;
+            let _k_new = _k.clone() + 8 - _k.clone() % 8;
+            let n_new = n.clone() + 8 - n.clone() % 8;
+
+            let m_pad = if m.clone() % 8 == Expression::from(0) { 
+                Expression::from(0) 
+            } else { 
+                Expression::from(8) - (m.clone() % 8)
+            };
+            let _k_pad = if _k.clone() % 8 == Expression::from(0) { 
+                Expression::from(0) 
+            } else { 
+                Expression::from(8) - (_k.clone() % 8)
+            };
+            let n_pad = if n.clone() % 8 == Expression::from(0) { 
+                Expression::from(0) 
+            } else { 
+                Expression::from(8) - (n.clone() % 8)
+            };
+            self = self.pad(((0, m_pad), (0, 0)));
+            rhs = rhs.pad(((0, 0), (0, n_pad)));
+
+            // +++++++
+            // println!("m_new: {}, k_new: {}, n_new: {}", m_new, k_new, n_new);
+            // println!("m_pad: {}, k_pad: {}, n_pad: {}", m_pad, k_pad, n_pad);
+
+            // println!("self: {:?}", self.dims());
+            // println!("rhs: {:?}", rhs.dims());
+
+            // println!("self: {:?}", self.shape);
+            // println!("rhs: {:?}", rhs.shape);
+            
+            // println!("pad self: {:?}", self.dims());
+            // println!("pad rhs: {:?}", rhs.dims());
+
+            // self.shape = self.shape.replace(0, m_new);
+            // self.shape = self.shape.replace(1, k_new);
+            // rhs.shape = rhs.shape.replace(0, k_new);
+            // rhs.shape = rhs.shape.replace(1, n_new);
+            // +++++++
+
             // Broadcasted Multiply
-            let mul = self.expand_dim(1, n) * rhs.permute((1, 0)).expand_dim(0, m);
+            let mul = self.expand_dim(1, n_new) * rhs.permute((1, 0)).expand_dim(0, m_new);
 
             // Sum Reduce
             let mut ret = mul.sum(2);
