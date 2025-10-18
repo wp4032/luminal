@@ -10,9 +10,21 @@ impl GraphTensor {
             let (m, _k) = self.dims2();
             let (_k, n) = rhs.dims2();
 
-            let m_new = m.clone() + 8 - m.clone() % 8;
-            let _k_new = _k.clone() + 8 - _k.clone() % 8;
-            let n_new = n.clone() + 8 - n.clone() % 8;
+            let m_new = if m.clone() % 8 == Expression::from(0) {
+                m.clone()
+            } else {
+                m.clone() + 8 - m.clone() % 8
+            };
+            let _k_new = if _k.clone() % 8 == Expression::from(0) {
+                _k.clone()
+            } else {
+                _k.clone() + 8 - _k.clone() % 8
+            };
+            let n_new = if n.clone() % 8 == Expression::from(0) {
+                n.clone()
+            } else {
+                n.clone() + 8 - n.clone() % 8
+            };
 
             let m_pad = if m.clone() % 8 == Expression::from(0) { 
                 Expression::from(0) 
@@ -29,12 +41,12 @@ impl GraphTensor {
             } else { 
                 Expression::from(8) - (n.clone() % 8)
             };
-            self = self.pad(((0, m_pad), (0, 0)));
-            rhs = rhs.pad(((0, 0), (0, n_pad)));
+            self = self.pad(((0, m_pad), (0, _k_pad))).contiguous();
+            rhs = rhs.pad(((0, _k_pad), (0, n_pad))).contiguous();
 
             // +++++++
-            // println!("m_new: {}, k_new: {}, n_new: {}", m_new, k_new, n_new);
-            // println!("m_pad: {}, k_pad: {}, n_pad: {}", m_pad, k_pad, n_pad);
+            // println!("m_new: {}, k_new: {}, n_new: {}", m_new, _k_new, n_new);
+            // println!("m_pad: {}, k_pad: {}, n_pad: {}", m_pad, _k_pad, n_pad);
 
             // println!("self: {:?}", self.dims());
             // println!("rhs: {:?}", rhs.dims());
@@ -58,6 +70,13 @@ impl GraphTensor {
             let mut ret = mul.sum(2);
             if vec {
                 ret = ret.reshape(ret.dims().last().unwrap());
+            }
+
+            // Slice out the padding
+            if vec {
+                ret = ret.slice(vec![(0, n)]);
+            } else {
+                ret = ret.slice(vec![(0, m), (0, n)]);
             }
             ret
         } else if self.shape.len() == 3 {
